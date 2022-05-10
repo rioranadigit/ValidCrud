@@ -1,0 +1,93 @@
+.heading{
+    background-color:#ebfaf2;
+    padding-bottom: 1%;
+}
+
+.shadow{
+    padding: 4% 4% 4% 4%;
+}
+.body{
+    font-family: 'mulli';
+}
+
+
+.form-control.ng-touched.ng-invalid {
+    border:1px solid red;
+   }
+   .form-control.ng-touched.ng-valid {
+    border:1px solid green;
+   }
+
+.datealign{
+    width: 25vw;
+}
+
+.space{
+    height: 85px;
+}
+tr{
+    background-color: #ffffff;
+}
+.iconButton{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.fa-times{
+    color: red;
+}
+
+.fa-pencil{
+    color: blue;
+}
+
+.border{
+    transform: scale(0.9);   
+}
+
+
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #0a27b5;
+}
+
+tr:hover {
+    background-color: rgb(216, 239, 245);
+  }

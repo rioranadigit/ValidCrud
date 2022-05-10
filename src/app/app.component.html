@@ -1,0 +1,147 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="p-3 navbar-brand">Registration Form</a>
+</nav>
+<div class="backg">
+  <div class="container pt-1">
+    <div class="row">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-9 card shadow border">
+            <div class="container heading">
+              <h3 class="pt-3">Online Registration</h3>
+            </div>
+            <form [formGroup]="exform">
+              <div class="form-group space">
+                <label class="col pt-2">Name:</label>
+                <input
+                  formControlName="name"
+                  type="text"
+                  (keypress)="AlphOnly($event)"
+                  class="form-control"
+                />
+                <small
+                  *ngIf="name.invalid && name.dirty; else elseblock"
+                  class="text-danger"
+                  >Max length is 30</small
+                >
+                <ng-template #elseblock>
+                  <small
+                    *ngIf="name.invalid && name.touched"
+                    class="text-danger"
+                    >Please Enter Name</small
+                  ></ng-template
+                >
+              </div>
+              <div class="form-group space">
+                <label class="col">Email:</label>
+                <input
+                  formControlName="email"
+                  (keypress)="Alphanumeric($event)"
+                  type="text"
+                  class="form-control"
+                />
+                <small
+                  *ngIf="email.invalid && email.touched"
+                  class="text-danger"
+                  >Invalid Email ID</small
+                >
+              </div>
+              <div class="form-group space">
+                <label class="col">Phone:</label>
+                <input
+                  formControlName="phone"
+                  (keypress)="numeric($event)"
+                  type="text"
+                  class="form-control"
+                  maxlength="10"
+                />
+                <small
+                  *ngIf="phone.invalid && phone.touched"
+                  class="text-danger"
+                  >Please Enter phone number</small
+                >
+              </div>
+              <div class="form-group space">
+                <label class="col">Address:</label>
+                <textarea
+                  formControlName="address"
+                  (keypress)="Alphanumericsy($event)"
+                  class="form-control"
+                ></textarea>
+                <small
+                  *ngIf="address.invalid && address.touched"
+                  class="text-danger"
+                  >Please Enter Address</small
+                >
+              </div>
+              <div class="mt-3 space">
+                <mat-form-field class="datealign">
+                  <input
+                    formControlName="date1"
+                    matInput
+                    [matDatepicker]="picker"
+                    [min]="minDate"
+                    [max]="maxDate"
+                    placeholder="Choose a date"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker> </mat-form-field
+                ><br />
+                <small
+                  *ngIf="date1.invalid && date1.touched"
+                  class="text-danger"
+                  >Please select date</small
+                >
+              </div>
+              <button (click)="additem()" type="button" class="btn btn-primary">
+                {{ actionBtn }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Date</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="active-row" *ngFor="let d of regdata; index as i">
+              <th>{{ i + 1 }}</th>
+              <td>{{ d.name }}</td>
+              <td>{{ d.email }}</td>
+              <td>{{ d.phone }}</td>
+              <td>{{ d.address }}</td>
+              <td>{{ d.date1 | date: "dd/MM/yyyy" }}</td>
+              <td>
+                <button class="iconButton" (click)="onEditItem(d, i)">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </td>
+              <td>
+                <button class="iconButton" (click)="deleteitem(d.id)">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
